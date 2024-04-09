@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    /* Fonts */
+    --title: 'Karla', 'serif';
+    --main-font: 'Quicksand', 'serif';
+
+    /* Colors */
+    --background: #eeece6;
+    --light-blue: #9FE7F5;
+    --blue: #429EBD;
+    --dark-blue: #053F5C;
+    --yellow: #F7AD19;
+    --orange: #F27F0C;
+}
+
+/* Header */
+
+
+/* Main */
+
+
+/* Footer */
