@@ -6,7 +6,9 @@
     --main-font: 'Quicksand', 'serif';
 
     /* Colors */
-    --background: #eeece6;
+    --background: #f5f5f5;
+    --grey: #fbfbfb;
+    --black: #373737;
     --light-blue: #9FE7F5;
     --blue: #429EBD;
     --dark-blue: #053F5C;
@@ -14,10 +16,46 @@
     --orange: #F27F0C;
 }
 
-/* Header */
+html, body {
+    height: 100%;
+}
 
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--main-font);
+}
+
+/* Header */
+.logo {
+    font-family: var(--title);
+    font-size: 2rem;
+    font-weight: 600;
+}
 
 /* Main */
-
+main {
+    flex: 1 0 auto;
+    background-color: var(--background);
+}
 
 /* Footer */
+footer {
+    flex-shrink: 0;
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icons, .footer-text {
+    height: 1.5rem;
+    margin: 1rem;
+}
+
+footer a {
+    list-style: none;
+    text-decoration: none;
+    color: var(--black);
+}

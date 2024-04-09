@@ -11,6 +11,7 @@
     {% endblock %}
 
     {% block onload_js %}
+    <script src="https://kit.fontawesome.com/74774a4a16.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {% endblock %}
 
@@ -20,10 +21,12 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">BrainON</a>
+              <a class="navbar-brand logo" href="#">BrainON</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
+
+              <!-- Navigation items -->
               <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                   <li class="nav-item">
@@ -57,6 +60,32 @@
           </nav>
     </header>
 
-    <h1>Hello kitten!</h1>
+    <!-- Main -->
+    <main>
+        {% block content %}
+        
+        {% endblock %}
+    </main>
+
+    
+    <!-- Footer -->
+    <footer>
+        <a href="http://" target="_blank" rel="noopener noreferrer" aria-label="Linked - Openes in a new">
+            BrainOn</a>
+        <p class="footer-text">Copyright 2024 by Asya Haroyan</p>
+        <p class="footer-text">Find Us On:</p>
+        <a href="http://" target="_blank" rel="noopener noreferrer" aria-label="Linked - Openes in a new" class="social-icons">
+           Facebook <i class="fa-brands fa-square-facebook"></i>
+        </a>
+        <a href="http://" target="_blank" rel="noopener noreferrer" aria-label="Linked - Openes in a new" class="social-icons">
+            Instagram <i class="fa-brands fa-square-instagram"></i>
+         </a>
+         <a href="http://" target="_blank" rel="noopener noreferrer" aria-label="Linked - Openes in a new" class="social-icons">
+            YouTube <i class="fa-brands fa-square-youtube"></i>
+         </a>
+         <a href="http://" target="_blank" rel="noopener noreferrer" aria-label="Linked - Openes in a new" class="social-icons">
+            LinkedIn <i class="fa-brands fa-linkedin"></i>
+         </a>
+    </footer>
 </body>
 </html>
