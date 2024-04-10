@@ -51,8 +51,8 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+# LOGIN_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,6 +85,14 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 WSGI_APPLICATION = 'main.wsgi.application'
 
 
@@ -101,6 +109,11 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.gitpod.io",
+    "https://*.herokuapp.com"
+]
 
 
 # Password validation
