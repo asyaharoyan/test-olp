@@ -3,10 +3,6 @@
 
 # Create your views here.
 
-
-# def home(request):
-#     return HttpResponse("Hello, Blog!")
-
 from django.views.generic import TemplateView
 
 
