@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+<div class="card text-center">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">So sad that you are leaving!</h5>
+    <p class="card-text">
+      Welcome back to watch more exciting videos!
+  </p>
+  <form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <button class="btn btn-primary signin-btn" type="submit">{% trans 'Log Out' %}</button>
+</form>
+  </div>
+  <div class="card-footer">
+  </div>
+{% endblock %}

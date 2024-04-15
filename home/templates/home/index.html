@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
 
-
+{% else %}
 <div class="card text-center">
     <div class="card-header">
         Wlcome to BrainON, want to have fun while learning?
@@ -15,10 +16,11 @@
         By creating an account, you'll gain access to a vast array of courses, 
         taught by experts in their fields, covering subjects from arts and sciences to technology and business.
     </p>
-      <a href="#" class="btn btn-primary">Sign up | Sign in</a>
+      <a href="{% url 'account_signup' %}" class="btn btn-primary signin-btn">Sign Up</a>
+      <a href="{% url 'account_login' %}" class="btn btn-primary signin-btn">Log In</a>
     </div>
     <div class="card-footer">
     </div>
   </div>
-        
+{% endif %}
 {% endblock %}

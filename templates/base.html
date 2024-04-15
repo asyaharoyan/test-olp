@@ -1,6 +1,9 @@
 {% load static %}
 {% url 'home' as home_url %}
 {% url 'about' as about_url %}
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +21,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand logo" href="#">BrainON</a>
+              <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" class="logo" alt="BrainOn logo"></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -43,9 +46,20 @@
                       <li><a class="dropdown-item" href="#">English</a></li>
                     </ul>
                   </li>
+                  {% if user.is_authenticated %}
+                    <li class="nav-item">
+	                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" 
+                                                                            href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                  {% else %}
+                    <li class="nav-item">
+	                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+		                                                                          href="{% url 'account_signup' %}">Register</a>
+                    </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Sign In | Sign Up</a>
+	                  <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
                   </li>
+                  {% endif %}
                 </ul>
                 <!-- Search form -->
                 <form class="d-flex" role="search">
@@ -68,21 +82,21 @@
     <!-- Footer -->
     <footer>
         <a href="http://" target="_blank" rel="noopener noreferrer" aria-label="Linked - Openes in a new">
-            BrainOn</a>
-        <p class="footer-text">Copyright 2024 by Asya Haroyan</p>
-        <p class="footer-text">Find Us On:</p>
+            <p class="footer-text hide">BrainOn</p></a>
+        <p class="footer-text hide">Copyright 2024 by Asya Haroyan</p>
+        <p class="footer-text">Find Us:</p>
+        <p class="footer-text hide">Facebook</p>
         <a href="http://" target="_blank" rel="noopener noreferrer" aria-label="Linked - Openes in a new" class="social-icons">
-           Facebook <i class="fa-brands fa-square-facebook"></i>
-        </a>
+           <i class="fa-brands fa-square-facebook"></i></a>
+        <p class="footer-text hide">Instagram</p>
         <a href="http://" target="_blank" rel="noopener noreferrer" aria-label="Linked - Openes in a new" class="social-icons">
-            Instagram <i class="fa-brands fa-square-instagram"></i>
-         </a>
+             <i class="fa-brands fa-square-instagram"></i></a>
+        <p class="footer-text hide">YouTube</p>
          <a href="http://" target="_blank" rel="noopener noreferrer" aria-label="Linked - Openes in a new" class="social-icons">
-            YouTube <i class="fa-brands fa-square-youtube"></i>
-         </a>
+        <i class="fa-brands fa-square-youtube"></i></a>
+        <p class="footer-text hide">LinkedIn</p>
          <a href="http://" target="_blank" rel="noopener noreferrer" aria-label="Linked - Openes in a new" class="social-icons">
-            LinkedIn <i class="fa-brands fa-linkedin"></i>
-         </a>
+            <i class="fa-brands fa-linkedin"></i></a>
     </footer>
 
     {% block onload_js %}

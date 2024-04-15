@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Up" %}{% endblock %}
+
+{% block content %}
+<div class="card text-center">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">So happy to see you!</h5>
+    <p class="card-text">
+      {% blocktrans %}
+        Welcome back to BrainOn.
+        You don't have an account yet? Then please
+        <a class="link" href="{{ signup_url }}">Sign Up</a>
+        instead.
+      {% endblocktrans %}
+  </p>
+  <form method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <button class="btn btn-primary signin-btn" type="submit">{% trans 'Log In' %}</button>
+</form>
+  </div>
+  <div class="card-footer">
+  </div>
+{% endblock %}
