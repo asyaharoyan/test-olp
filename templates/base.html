@@ -36,7 +36,8 @@
                     <a class="nav-link {% if request.path == about_url %}active{% endif %}" href="{% url 'about' %}">About</a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle {% if request.path == courses_url %}active{% endif %}" 
+                      href="{% url 'courses' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Online Courses
                     </a>
                     <ul class="dropdown-menu">
