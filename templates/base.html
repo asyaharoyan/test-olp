@@ -35,18 +35,23 @@
                   <li class="nav-item">
                     <a class="nav-link {% if request.path == about_url %}active{% endif %}" href="{% url 'about' %}">About</a>
                   </li>
-                  <li class="nav-item dropdown">
+                  <!--Trying another view -->
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == courses_url %}active{% endif %}" href="{% url 'courses' %}">Online Lessons</a>
+                  </li>
+                  <!-- The view I wish to have -->
+                  <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle {% if request.path == courses_url %}active{% endif %}" 
                       href="{% url 'courses' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Online Courses
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Physics</a></li>
+                      <li><a class="dropdown-item" href="{% url 'courses' %}">Physics</a></li>
                       <li><a class="dropdown-item" href="#">Chemistry</a></li>
                       <li><a class="dropdown-item" href="#">Maths</a></li>
                       <li><a class="dropdown-item" href="#">English</a></li>
                     </ul>
-                  </li>
+                  </li> -->
                   {% if user.is_authenticated %}
                     <li class="nav-item">
 	                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" 

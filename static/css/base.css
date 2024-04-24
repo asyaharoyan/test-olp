@@ -60,6 +60,11 @@ main {
     font-weight: 800;
 }
 
+.post-images {
+    width: 30%;
+    height: auto;
+}
+
 
 /* Footer */
 footer {
