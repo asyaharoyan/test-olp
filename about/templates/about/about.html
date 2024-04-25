@@ -3,15 +3,15 @@
 {% load static %}
 <div class="container mt-5">
   <div class="row">
-    <div class="col-12">
+    <div class="col-sm-12">
     <h2 class="text-center">{{ about.title }}</h2>
     <br>
   </div>
-    <div class="col-4 text-center">
+    <div class="col-sm-4 text-center">
         <img src="{% static 'images/brainon.png' %}" class="rounded about-img" alt="BrainOn brand picture"/>
     </div>
-    <div class="col-8">
-      <div class="col-10">
+    <div class="col-sm-8">
+      <div class="col-sm-10">
         {{ about.content | safe }}
       </div>
     </div>
