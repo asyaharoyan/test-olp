@@ -1,33 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+    <div class="container-fluid">
+      <div class="row">
 
-{% if user.is_authenticated %}
-{% for lesson in lessons %}
-  <h2>{{ lesson.title }}</h2>
-  <p>{{ lesson.course.course_subject }}</p>
-  <img src="{{ lesson.video_lesson.url }}" alt="{{ lesson.title }}" class="post-images">
-  <p>Teacher: {{ lesson.course.teacher }}</p>
-{% endfor %}
-{% else %}
-<div class="card text-center">
-    <div class="card-header">
-        Wlcome to BrainON, want to have fun while learning?
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Sign in | Sign up - to watch our online lessons!</h5>
-      <p class="card-text">
-        Welcome to our online learning platform! 
-        Signing up is your gateway to a world of knowledge and opportunity. <br>
-        By creating an account, you'll gain access to a vast array of courses, 
-        taught by experts in their fields, covering subjects from arts and sciences to technology and business.
-    </p>
-      <a href="{% url 'account_signup' %}" class="btn btn-primary signin-btn">Sign Up</a>
-      <a href="{% url 'account_login' %}" class="btn btn-primary signin-btn">Log In</a>
-    </div>
-    <div class="card-footer">
-    </div>
+        <!-- Lessons column-->
+          <div class="col-12 mt-3 left">
+              <div class="row">
+                  {% for lesson in lessons %}
+                  <div class="col-md-4">
+                      <div class="card mb-4">
+                          <div class="card-body">
+                              <div class="image-container">
+                                  {% if "placeholder" in lesson.video_lesson.url %}
+                                      <img class="card-img-top" src="{% static 'images/home.png' %}"
+                                                      alt="placeholder image">
+                                  {% else %}
+                                      <img class="card-img-top" src=" {{ lesson.video_lesson.url }}"
+                                                      alt="{{ lesson.title }}">
+                                  {% endif %}
+                                  <div class="image-flash">
+                                    <h2>{{ lesson.title }}</h2>
+                                    <p>{{ lesson.course.course_subject }}</p>
+                                    <p>Teacher: {{ lesson.course.teacher }}</p>
+                                  </div>
+                              </div>
+                             
+  
+                              <hr />
+                              <!-- <p class="card-text text-muted h6">{{ post.created_on}}</p> -->
+                          </div>
+                      </div>
+                  </div>
+                  {% if forloop.counter|divisibleby:3 %}
+              </div>
+              <div class="row">
+                  {% endif %}
+                  {% endfor %}
+  
+              </div>
+          </div>
+      </div>
+      {% if is_paginated %}
+      <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+              {% if page_obj.has_previous %}
+              <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a></li>
+              {% endif %}
+              {% if page_obj.has_next %}
+              <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+              {% endif %}
+          </ul>
+      </nav>
+      {% endif %}
   </div>
-{% endif %}
 
 {% endblock content %}
