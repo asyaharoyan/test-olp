@@ -3,7 +3,7 @@
 {% load static %}
     <div class="container-fluid">
       <div class="row">
-
+        {% if user.is_authenticated %}
         <!-- Lessons column-->
           <div class="col-12 mt-3 left">
               <div class="row">
@@ -52,6 +52,19 @@
               {% endif %}
           </ul>
       </nav>
+      {% endif %}
+      {% else %}
+      <div class="card text-center">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Log In to watch our online lessons!</h5>
+          <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">
+            <button class="btn btn-primary signin-btn" type="submit">Log In to watch!</button>
+          </a>
+        </div>
+        <div class="card-footer">
+        </div>
       {% endif %}
   </div>
 
