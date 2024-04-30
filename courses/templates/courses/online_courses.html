@@ -20,9 +20,11 @@
                                                       alt="{{ lesson.title }}">
                                   {% endif %}
                                   <div class="image-flash">
+                                    <a href="{% url 'course_detail' lesson.slug %}" class="nav-link">
                                     <h2>{{ lesson.title }}</h2>
                                     <p>{{ lesson.course.course_subject }}</p>
                                     <p>Teacher: {{ lesson.course.teacher }}</p>
+                                  </a>
                                   </div>
                               </div>
                              

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<div class="masthead">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Post title goes in these h1 tags -->
+                <h1>{{ lesson.title }}</h1>
+                <!-- Post author goes before the | the post's created date goes after -->
+                <p>{{ lesson.course.teacher }} | {{ lesson.created_on }}</p>
+            </div>
+            <div class="col-sm-12 text-center">
+                {% if "placeholder" in lesson.video_lesson.url %}
+                <img class="lesson-video" src="{% static 'images/brainon.png' %}"
+                                alt="placeholder image">
+            {% else %}
+                <img class="lesson-video" src=" {{ lesson.video_lesson.url }}"
+                                alt="{{ lesson.title }}">
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+                <!-- The post content goes inside the card-text. -->
+                <!-- Use the | safe filter inside the template tags -->
+                <article class="card-text mt-3 mb-3">
+                    {{ lesson.description | safe }}
+                </article>
+        </div>
+    </div>
+{% endblock content %}

@@ -65,6 +65,11 @@ main {
     height: auto;
 }
 
+.lesson-video {
+    width: 50%;
+    height: auto;
+    margin: auto;
+}
 
 /* Footer */
 footer {
