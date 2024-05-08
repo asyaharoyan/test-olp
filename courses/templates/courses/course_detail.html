@@ -71,7 +71,7 @@
           </p>
           {% endif %}
           {% if user.is_authenticated and comment.commenter == user %}
-          <button class="btn btn-edit"
+          <button class="btn btn-primary signin-btn"
             comment_id="{{ comment.id }}">Edit</button>
           {% endif %}
         </div>
