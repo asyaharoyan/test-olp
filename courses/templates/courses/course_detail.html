@@ -34,5 +34,65 @@
                     {{ lesson.description | safe }}
                 </article>
         </div>
+
+        <!-- Displaying count of comments -->
+  <div class="row">
+    <div class="col-12">
+      <strong class="text-secondary">
+        <i class="far fa-comments"></i> {{ comment_count }}
+      </strong>
+    </div>
+    <div class="col-12">
+      <hr>
+    </div>
+  </div>
+  <!-- Displaying Comments -->
+  <div class="row">
+    <div class="col-md-8 mb-4 mt-3">
+      <h3>Comments:</h3>
+      <div class="card-body">
+        <!-- To loop through each comments -->
+        {% for comment in comments %}
+        <div class="p-2 comments
+          {% if not comment.approved and comment.commenter == user %}
+          faded{% elif not comment.approved %} d-none{% endif %}">
+          <p class="font-weight-bold">
+            {{ comment.created_on }} |
+            <span class="font-weight-normal">
+              {{ comment.commenter }}
+            </span> wrote:
+          </p>
+          <div id="comment{{ comment.id }}">
+            {{ comment.body | linebreaks }}
+          </div>
+          {% if not comment.approved and comment.commenter == user %}
+          <p class="approval">
+            This comment is awaiting approval
+          </p>
+          {% endif %}
+        </div>
+        <!-- Our for loop ends here -->
+        {% endfor %}
+      </div>
+    </div>
+    <!-- Creating New Comments -->
+    <div class="col-md-4 mb-4 mt-3">
+        <div class="card-body">
+          {% if user.is_authenticated %}
+          <h3>Leave a comment:</h3>
+          <p>Posting as: {{ user.username }}</p>
+          <form id="commentForm" method="post"
+            style="margin-top: 1.3em;">
+            {{ comment_form | crispy }}
+            {% csrf_token %}
+            <button id="submitButton" type="submit"
+              class="btn btn-primary signin-btn">Submit</button>
+          </form>
+          {% else %}
+          <p>You need to log in to leave a comment!</p>
+          {% endif %}
+        </div>
+      </div>
+  </div>
     </div>
 {% endblock content %}
